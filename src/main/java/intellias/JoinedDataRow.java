@@ -1,5 +1,7 @@
 package intellias;
 
+import java.util.Objects;
+
 /*
     JoinedDataRow<K extends Comparable<K>, V1, V2>,
     where K is a generic type of the key,
@@ -26,5 +28,22 @@ public class JoinedDataRow<K extends Comparable<K>, V1, V2> {
 
     public V2 getValue2() {
         return value2;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        JoinedDataRow<?, ?, ?> that = (JoinedDataRow<?, ?, ?>) o;
+        return Objects.equals(key, that.key) && Objects.equals(value1, that.value1) && Objects.equals(value2, that.value2);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(key, value1, value2);
     }
 }

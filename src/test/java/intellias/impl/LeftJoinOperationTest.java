@@ -4,30 +4,28 @@ import intellias.DataRow;
 import intellias.JoinedDataRow;
 import java.util.ArrayList;
 import java.util.Collection;
-import junit.framework.TestCase;
 import org.junit.Assert;
+import org.junit.Test;
 
-public class LeftJoinOperationTest extends TestCase {
-    Collection<DataRow<Integer, String>> leftCollection = new ArrayList<DataRow<Integer, String>>();
-    Collection<DataRow<Integer, String>> rightCollection = new ArrayList<DataRow<Integer, String>>();
+public class LeftJoinOperationTest {
 
-		leftCollection.add(new DataRow<Integer, String>(0,"Ukraine"));
-		leftCollection.add(new DataRow<Integer, String>(1,"Germany"));
-		leftCollection.add(new DataRow<Integer, String>(2,"France"));
+    @Test
+    public void leftJoinOperationTest() {
 
-		rightCollection.add(new DataRow<Integer, String>(0,"Kyiv"));
-		rightCollection.add(new DataRow<Integer, String>(1,"Berlin"));
-		rightCollection.add(new DataRow<Integer, String>(3,"Budapest"));
-
-    LeftJoinOperation<Integer, String, String> leftJoinOperation = new LeftJoinOperation<Integer, String, String>();
-    ArrayList<JoinedDataRow<Integer, String, String>> leftArrayList = (ArrayList<JoinedDataRow<Integer, String, String>>) leftJoinOperation
-            .join(leftCollection, rightCollection);
-
-    Collection<JoinedDataRow<Integer, String, String>> result = new ArrayList<JoinedDataRow<Integer, String, String>>();
-
-		result.add(new JoinedDataRow<Integer, String, String>(0,"Ukraine","Kyiv"));
-		result.add(new JoinedDataRow<Integer, String, String>(1,"Germany","Berlin"));
-		result.add(new JoinedDataRow<Integer, String, String>(2,"France",null));
-
-    Assert.assertEquals(leftArrayList,result);
+        Collection<DataRow<Integer, String>> leftCollection = new ArrayList<>();
+        Collection<DataRow<Integer, String>> rightCollection = new ArrayList<>();
+        Collection<JoinedDataRow<Integer, String, String>> expected = new ArrayList<>();
+        leftCollection.add(new DataRow<>(0, "Ukraine"));
+        leftCollection.add(new DataRow<>(1, "Germany"));
+        leftCollection.add(new DataRow<>(2, "France"));
+        rightCollection.add(new DataRow<>(0, "Kyiv"));
+        rightCollection.add(new DataRow<>(1, "Berlin"));
+        rightCollection.add(new DataRow<>(3, "Budapest"));
+        expected.add(new JoinedDataRow<>(0, "Ukraine", "Kyiv"));
+        expected.add(new JoinedDataRow<>(1, "Germany", "Berlin"));
+        expected.add(new JoinedDataRow<>(2, "France", null));
+        LeftJoinOperation<Integer, String, String> leftJoinOperation = new LeftJoinOperation<>();
+        Collection<JoinedDataRow<Integer, String, String>> actual = leftJoinOperation.join(leftCollection, rightCollection);
+        Assert.assertEquals(expected, actual);
+    }
 }
