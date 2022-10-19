@@ -8,9 +8,9 @@ import java.util.Objects;
     V1 and V2 are generic types of the values
 */
 public class JoinedDataRow<K extends Comparable<K>, V1, V2> {
-    K key;
-    V1 value1;
-    V2 value2;
+    private K key;
+    private V1 value1;
+    private V2 value2;
 
     public JoinedDataRow(K key, V1 value1, V2 value2) {
         this.key = key;
@@ -39,7 +39,9 @@ public class JoinedDataRow<K extends Comparable<K>, V1, V2> {
             return false;
         }
         JoinedDataRow<?, ?, ?> that = (JoinedDataRow<?, ?, ?>) o;
-        return Objects.equals(key, that.key) && Objects.equals(value1, that.value1) && Objects.equals(value2, that.value2);
+        return Objects.equals(key, that.key)
+                && Objects.equals(value1, that.value1)
+                && Objects.equals(value2, that.value2);
     }
 
     @Override

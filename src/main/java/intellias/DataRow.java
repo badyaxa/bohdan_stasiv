@@ -8,8 +8,8 @@ import java.util.Objects;
     V is a generic type of the value.
 */
 public class DataRow<K extends Comparable<K>, V> {
-    K key;
-    V value;
+    private K key;
+    private V value;
 
     public DataRow(K key, V value) {
         this.key = key;

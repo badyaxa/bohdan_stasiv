@@ -18,19 +18,23 @@ public class LeftJoinOperation<K extends Comparable<K>, V1, V2>
                 JoinedDataRow<K, V1, V2>
                 > {
     @Override
-    public Collection<JoinedDataRow<K, V1, V2>> join(Collection<DataRow<K, V1>> leftCollection, Collection<DataRow<K, V2>> rightCollection) {
+    public Collection<JoinedDataRow<K, V1, V2>> join(Collection<DataRow<K, V1>> leftCollection,
+                                                     Collection<DataRow<K, V2>> rightCollection) {
         Collection<JoinedDataRow<K, V1, V2>> collection = new ArrayList<>();
         for (DataRow<K, V1> leftElement : leftCollection) {
             List<DataRow<K, V2>> rightFilteredList = rightCollection.stream()
                     .filter(dr -> dr.getKey().equals(leftElement.getKey()))
                     .collect(Collectors.toList());
             if (rightFilteredList.isEmpty()) {
-                collection.add(new JoinedDataRow<>(leftElement.getKey(), leftElement.getValue(), null));
+                collection.add(
+                        new JoinedDataRow<>(leftElement.getKey(), leftElement.getValue(), null));
                 continue;
             }
             for (DataRow<K, V2> rightElement : rightFilteredList) {
                 if (leftElement.getKey().equals(rightElement.getKey())) {
-                    collection.add(new JoinedDataRow<>(leftElement.getKey(), leftElement.getValue(), rightElement.getValue()));
+                    collection.add(
+                            new JoinedDataRow<>(leftElement.getKey(),
+                                    leftElement.getValue(), rightElement.getValue()));
                 }
             }
         }
