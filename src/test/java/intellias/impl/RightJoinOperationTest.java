@@ -23,8 +23,8 @@ public class RightJoinOperationTest extends TestCase {
         expected.add(new JoinedDataRow<>(0, "Ukraine", "Kyiv"));
         expected.add(new JoinedDataRow<>(1, "Germany", "Berlin"));
         expected.add(new JoinedDataRow<>(3, null, "Budapest"));
-        LeftJoinOperation<Integer, String, String> leftJoinOperation = new LeftJoinOperation<>();
-        Collection<JoinedDataRow<Integer, String, String>> actual = leftJoinOperation.join(leftCollection, rightCollection);
+        RightJoinOperation<Integer, String, String> rightJoinOperation = new RightJoinOperation<>();
+        Collection<JoinedDataRow<Integer, String, String>> actual = rightJoinOperation.join(leftCollection, rightCollection);
         Assert.assertEquals(expected, actual);
     }
 }
