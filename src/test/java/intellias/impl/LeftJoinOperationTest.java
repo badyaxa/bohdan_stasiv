@@ -8,10 +8,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class LeftJoinOperationTest {
-
     @Test
-    public void leftJoinOperationTest() {
-
+    public void testJoin() {
         Collection<DataRow<Integer, String>> leftCollection = new ArrayList<>();
         Collection<DataRow<Integer, String>> rightCollection = new ArrayList<>();
         Collection<JoinedDataRow<Integer, String, String>> expected = new ArrayList<>();
