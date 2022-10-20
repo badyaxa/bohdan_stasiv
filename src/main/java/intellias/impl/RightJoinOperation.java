@@ -8,8 +8,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-//DataRow<K extends Comparable<K>, V>
-//JoinedDataRow<K extends Comparable<K>, V1, V2>
 public class RightJoinOperation<K extends Comparable<K>, V1, V2>
         implements
         JoinOperation<

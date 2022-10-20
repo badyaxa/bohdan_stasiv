@@ -2,11 +2,6 @@ package intellias;
 
 import java.util.Objects;
 
-/*
-    DataRow<K extends Comparable<K>, V>,
-    where K is a generic type of the key,
-    V is a generic type of the value.
-*/
 public class DataRow<K extends Comparable<K>, V> {
     private K key;
     private V value;

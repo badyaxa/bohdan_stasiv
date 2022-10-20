@@ -6,8 +6,6 @@ import intellias.JoinedDataRow;
 import java.util.ArrayList;
 import java.util.Collection;
 
-//DataRow<K extends Comparable<K>, V>
-//JoinedDataRow<K extends Comparable<K>, V1, V2>
 public class InnerJoinOperation<K extends Comparable<K>, V1, V2>
         implements
         JoinOperation<

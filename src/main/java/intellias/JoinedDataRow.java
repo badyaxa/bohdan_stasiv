@@ -2,11 +2,6 @@ package intellias;
 
 import java.util.Objects;
 
-/*
-    JoinedDataRow<K extends Comparable<K>, V1, V2>,
-    where K is a generic type of the key,
-    V1 and V2 are generic types of the values
-*/
 public class JoinedDataRow<K extends Comparable<K>, V1, V2> {
     private K key;
     private V1 value1;
